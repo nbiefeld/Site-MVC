@@ -1,0 +1,1023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+			<Schema Namespace="PHStudiosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self"
+			        xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+			        xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+			        xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+				<EntityType Name="Feature">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+					<Property Name="Text" Type="varchar" MaxLength="500" Nullable="false" />
+				</EntityType>
+				<EntityType Name="FlowplayerResource">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="CustomerID" Type="int" Nullable="false" />
+					<Property Name="WebM" Type="varchar" MaxLength="100" />
+					<Property Name="MP4" Type="varchar" MaxLength="100" />
+					<Property Name="Flash" Type="varchar" MaxLength="100" />
+				</EntityType>
+				<EntityType Name="Game">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="ShortDescription" Type="varchar" MaxLength="100" Nullable="false" />
+					<Property Name="LongDescription" Type="text" Nullable="false" />
+					<Property Name="FlowplayerResource_ID" Type="int" />
+					<Property Name="InDevelopment" Type="bit" Nullable="false" />
+				</EntityType>
+				<EntityType Name="GameFeature">
+					<Key>
+						<PropertyRef Name="Game_ID" />
+						<PropertyRef Name="Feature_ID" />
+					</Key>
+					<Property Name="Game_ID" Type="int" Nullable="false" />
+					<Property Name="Feature_ID" Type="int" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="GameResource">
+					<Key>
+						<PropertyRef Name="Game_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Game_ID" Type="int" Nullable="false" />
+					<Property Name="Resource_ID" Type="int" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Project">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Title" Type="varchar" MaxLength="45" Nullable="false" />
+					<Property Name="ShortDescription" Type="varchar" MaxLength="100" Nullable="false" />
+					<Property Name="LongDescription" Type="text" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="ProjectFeature">
+					<Key>
+						<PropertyRef Name="Project_ID" />
+						<PropertyRef Name="Feature_ID" />
+					</Key>
+					<Property Name="Project_ID" Type="int" Nullable="false" />
+					<Property Name="Feature_ID" Type="int" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Resource">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+					<Property Name="Location" Type="varchar" MaxLength="150" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Series">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Image" Type="varchar" MaxLength="45" Nullable="false" />
+					<Property Name="ShortDescription" Type="varchar" MaxLength="100" Nullable="false" />
+					<Property Name="LongDescription" Type="text" Nullable="false" />
+					<Property Name="YouTube_ID" Type="varchar" MaxLength="45" />
+					<Property Name="Finished" Type="bit" Nullable="false" />
+					<Property Name="Legacy" Type="bit" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+					<Property Name="ShortName" Type="varchar" MaxLength="15" />
+				</EntityType>
+				<EntityType Name="SeriesResource">
+					<Key>
+						<PropertyRef Name="Series_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Series_ID" Type="int" Nullable="false" />
+					<Property Name="Resource_ID" Type="int" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Video">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+					<Property Name="Description" Type="text" Nullable="false" />
+					<Property Name="Series_ID" Type="int" Nullable="false" />
+					<Property Name="Length" Type="smallint" Nullable="false" />
+					<Property Name="Size" Type="bigint" />
+					<Property Name="Order" Type="bigint" Nullable="false" />
+					<Property Name="ReleaseDate" Type="date" Nullable="false" />
+					<Property Name="YouTube_ID" Type="varchar" MaxLength="45" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<EntityType Name="VideoResource">
+					<Key>
+						<PropertyRef Name="Video_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Video_ID" Type="int" Nullable="false" />
+					<Property Name="Resource_ID" Type="int" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<!--Errors Found During Generation:
+warning 6002: The table/view 'program_phstudios.dbo.LatestProjects' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+				<EntityType Name="LatestProjects">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Title" Type="varchar" MaxLength="45" Nullable="false" />
+					<Property Name="ShortDescription" Type="varchar" MaxLength="100" Nullable="false" />
+					<Property Name="Created" Type="datetime" Nullable="false" />
+				</EntityType>
+				<!--Errors Found During Generation:
+warning 6002: The table/view 'program_phstudios.dbo.LatestVideos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+				<EntityType Name="LatestVideos">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="int" Nullable="false" />
+					<Property Name="Series_ID" Type="int" Nullable="false" />
+					<Property Name="Image" Type="varchar" MaxLength="45" Nullable="false" />
+					<Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+					<Property Name="Description" Type="text" Nullable="false" />
+					<Property Name="ReleaseDate" Type="date" Nullable="false" />
+					<Property Name="Order" Type="bigint" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+				</EntityType>
+				<Association Name="FK_Game_FlowplayerResource">
+					<End Role="FlowplayerResource" Type="Self.FlowplayerResource" Multiplicity="0..1" />
+					<End Role="Game" Type="Self.Game" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="FlowplayerResource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="Game">
+							<PropertyRef Name="FlowplayerResource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameFeature_Feature">
+					<End Role="Feature" Type="Self.Feature" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameFeature" Type="Self.GameFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Feature">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameFeature">
+							<PropertyRef Name="Feature_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameFeature_Game">
+					<End Role="Game" Type="Self.Game" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameFeature" Type="Self.GameFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Game">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameFeature">
+							<PropertyRef Name="Game_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameResource_Game">
+					<End Role="Game" Type="Self.Game" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameResource" Type="Self.GameResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Game">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameResource">
+							<PropertyRef Name="Game_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameResource" Type="Self.GameResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_ProjectFeature_Feature">
+					<End Role="Feature" Type="Self.Feature" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="ProjectFeature" Type="Self.ProjectFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Feature">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="ProjectFeature">
+							<PropertyRef Name="Feature_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_ProjectFeature_Project">
+					<End Role="Project" Type="Self.Project" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="ProjectFeature" Type="Self.ProjectFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Project">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="ProjectFeature">
+							<PropertyRef Name="Project_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_SeriesResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="SeriesResource" Type="Self.SeriesResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="SeriesResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_SeriesResource_Series">
+					<End Role="Series" Type="Self.Series" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="SeriesResource" Type="Self.SeriesResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Series">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="SeriesResource">
+							<PropertyRef Name="Series_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Video_Series">
+					<End Role="Series" Type="Self.Series" Multiplicity="1" />
+					<End Role="Video" Type="Self.Video" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Series">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="Video">
+							<PropertyRef Name="Series_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_VideoResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+					<End Role="VideoResource" Type="Self.VideoResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="VideoResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_VideoResource_Video">
+					<End Role="Video" Type="Self.Video" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="VideoResource" Type="Self.VideoResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Video">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="VideoResource">
+							<PropertyRef Name="Video_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityContainer Name="PHStudiosModelStoreContainer">
+					<EntitySet Name="Feature" EntityType="Self.Feature" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="FlowplayerResource" EntityType="Self.FlowplayerResource" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="GameFeature" EntityType="Self.GameFeature" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="GameResource" EntityType="Self.GameResource" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="ProjectFeature" EntityType="Self.ProjectFeature" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Resource" EntityType="Self.Resource" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Series" EntityType="Self.Series" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="SeriesResource" EntityType="Self.SeriesResource" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="VideoResource" EntityType="Self.VideoResource" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="LatestProjects" EntityType="Self.LatestProjects" store:Type="Views" store:Schema="dbo">
+						<DefiningQuery>
+							SELECT
+							[LatestProjects].[ID] AS [ID],
+							[LatestProjects].[Title] AS [Title],
+							[LatestProjects].[ShortDescription] AS [ShortDescription],
+							[LatestProjects].[Created] AS [Created]
+							FROM [dbo].[LatestProjects] AS [LatestProjects]
+						</DefiningQuery>
+					</EntitySet>
+					<EntitySet Name="LatestVideos" EntityType="Self.LatestVideos" store:Type="Views" store:Schema="dbo">
+						<DefiningQuery>
+							SELECT
+							[LatestVideos].[ID] AS [ID],
+							[LatestVideos].[Series_ID] AS [Series_ID],
+							[LatestVideos].[Image] AS [Image],
+							[LatestVideos].[Title] AS [Title],
+							[LatestVideos].[Description] AS [Description],
+							[LatestVideos].[ReleaseDate] AS [ReleaseDate],
+							[LatestVideos].[Order] AS [Order],
+							[LatestVideos].[Name] AS [Name]
+							FROM [dbo].[LatestVideos] AS [LatestVideos]
+						</DefiningQuery>
+					</EntitySet>
+					<AssociationSet Name="FK_Game_FlowplayerResource" Association="Self.FK_Game_FlowplayerResource">
+						<End Role="FlowplayerResource" EntitySet="FlowplayerResource" />
+						<End Role="Game" EntitySet="Game" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameFeature_Feature" Association="Self.FK_GameFeature_Feature">
+						<End Role="Feature" EntitySet="Feature" />
+						<End Role="GameFeature" EntitySet="GameFeature" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameFeature_Game" Association="Self.FK_GameFeature_Game">
+						<End Role="Game" EntitySet="Game" />
+						<End Role="GameFeature" EntitySet="GameFeature" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameResource_Game" Association="Self.FK_GameResource_Game">
+						<End Role="Game" EntitySet="Game" />
+						<End Role="GameResource" EntitySet="GameResource" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameResource_Resource" Association="Self.FK_GameResource_Resource">
+						<End Role="Resource" EntitySet="Resource" />
+						<End Role="GameResource" EntitySet="GameResource" />
+					</AssociationSet>
+					<AssociationSet Name="FK_ProjectFeature_Feature" Association="Self.FK_ProjectFeature_Feature">
+						<End Role="Feature" EntitySet="Feature" />
+						<End Role="ProjectFeature" EntitySet="ProjectFeature" />
+					</AssociationSet>
+					<AssociationSet Name="FK_ProjectFeature_Project" Association="Self.FK_ProjectFeature_Project">
+						<End Role="Project" EntitySet="Project" />
+						<End Role="ProjectFeature" EntitySet="ProjectFeature" />
+					</AssociationSet>
+					<AssociationSet Name="FK_SeriesResource_Resource" Association="Self.FK_SeriesResource_Resource">
+						<End Role="Resource" EntitySet="Resource" />
+						<End Role="SeriesResource" EntitySet="SeriesResource" />
+					</AssociationSet>
+					<AssociationSet Name="FK_SeriesResource_Series" Association="Self.FK_SeriesResource_Series">
+						<End Role="Series" EntitySet="Series" />
+						<End Role="SeriesResource" EntitySet="SeriesResource" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Video_Series" Association="Self.FK_Video_Series">
+						<End Role="Series" EntitySet="Series" />
+						<End Role="Video" EntitySet="Video" />
+					</AssociationSet>
+					<AssociationSet Name="FK_VideoResource_Resource" Association="Self.FK_VideoResource_Resource">
+						<End Role="Resource" EntitySet="Resource" />
+						<End Role="VideoResource" EntitySet="VideoResource" />
+					</AssociationSet>
+					<AssociationSet Name="FK_VideoResource_Video" Association="Self.FK_VideoResource_Video">
+						<End Role="Video" EntitySet="Video" />
+						<End Role="VideoResource" EntitySet="VideoResource" />
+					</AssociationSet>
+				</EntityContainer>
+			</Schema>
+		</edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="PHStudiosModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+			        xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+			        xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+			        xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="Feature">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+					<NavigationProperty Name="GameFeatures" Relationship="Self.FK_GameFeature_Feature" FromRole="Feature"
+					                    ToRole="GameFeature" />
+					<NavigationProperty Name="ProjectFeatures" Relationship="Self.FK_ProjectFeature_Feature" FromRole="Feature"
+					                    ToRole="ProjectFeature" />
+				</EntityType>
+				<EntityType Name="FlowplayerResource">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="CustomerID" Type="Int32" Nullable="false" />
+					<Property Name="WebM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+					<Property Name="MP4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+					<Property Name="Flash" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="Games" Relationship="Self.FK_Game_FlowplayerResource" FromRole="FlowplayerResource"
+					                    ToRole="Game" />
+				</EntityType>
+				<EntityType Name="Game">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ShortDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="FlowplayerResource_ID" Type="Int32" />
+					<Property Name="InDevelopment" Type="Boolean" Nullable="false" />
+					<NavigationProperty Name="FlowplayerResource" Relationship="Self.FK_Game_FlowplayerResource" FromRole="Game"
+					                    ToRole="FlowplayerResource" />
+					<NavigationProperty Name="GameFeatures" Relationship="Self.FK_GameFeature_Game" FromRole="Game"
+					                    ToRole="GameFeature" />
+					<NavigationProperty Name="GameResources" Relationship="Self.FK_GameResource_Game" FromRole="Game"
+					                    ToRole="GameResource" />
+				</EntityType>
+				<EntityType Name="GameFeature">
+					<Key>
+						<PropertyRef Name="Game_ID" />
+						<PropertyRef Name="Feature_ID" />
+					</Key>
+					<Property Name="Game_ID" Type="Int32" Nullable="false" />
+					<Property Name="Feature_ID" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Feature" Relationship="Self.FK_GameFeature_Feature" FromRole="GameFeature"
+					                    ToRole="Feature" />
+					<NavigationProperty Name="Game" Relationship="Self.FK_GameFeature_Game" FromRole="GameFeature" ToRole="Game" />
+				</EntityType>
+				<EntityType Name="GameResource">
+					<Key>
+						<PropertyRef Name="Game_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Game_ID" Type="Int32" Nullable="false" />
+					<Property Name="Resource_ID" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Game" Relationship="Self.FK_GameResource_Game" FromRole="GameResource" ToRole="Game" />
+					<NavigationProperty Name="Resource" Relationship="Self.FK_GameResource_Resource" FromRole="GameResource"
+					                    ToRole="Resource" />
+				</EntityType>
+				<EntityType Name="Project">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ShortDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="ProjectFeatures" Relationship="Self.FK_ProjectFeature_Project" FromRole="Project"
+					                    ToRole="ProjectFeature" />
+				</EntityType>
+				<EntityType Name="ProjectFeature">
+					<Key>
+						<PropertyRef Name="Project_ID" />
+						<PropertyRef Name="Feature_ID" />
+					</Key>
+					<Property Name="Project_ID" Type="Int32" Nullable="false" />
+					<Property Name="Feature_ID" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Feature" Relationship="Self.FK_ProjectFeature_Feature" FromRole="ProjectFeature"
+					                    ToRole="Feature" />
+					<NavigationProperty Name="Project" Relationship="Self.FK_ProjectFeature_Project" FromRole="ProjectFeature"
+					                    ToRole="Project" />
+				</EntityType>
+				<EntityType Name="Resource">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="GameResources" Relationship="Self.FK_GameResource_Resource" FromRole="Resource"
+					                    ToRole="GameResource" />
+					<NavigationProperty Name="SeriesResources" Relationship="Self.FK_SeriesResource_Resource" FromRole="Resource"
+					                    ToRole="SeriesResource" />
+					<NavigationProperty Name="VideoResources" Relationship="Self.FK_VideoResource_Resource" FromRole="Resource"
+					                    ToRole="VideoResource" />
+				</EntityType>
+				<EntityType Name="Series">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Image" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ShortDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false"
+					          Nullable="false" />
+					<Property Name="YouTube_ID" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+					<Property Name="Finished" Type="Boolean" Nullable="false" />
+					<Property Name="Legacy" Type="Boolean" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="SeriesResources" Relationship="Self.FK_SeriesResource_Series" FromRole="Series"
+					                    ToRole="SeriesResource" />
+					<NavigationProperty Name="Videos" Relationship="Self.FK_Video_Series" FromRole="Series" ToRole="Video" />
+					<Property Name="ShortName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+				</EntityType>
+				<EntityType Name="SeriesResource">
+					<Key>
+						<PropertyRef Name="Series_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Series_ID" Type="Int32" Nullable="false" />
+					<Property Name="Resource_ID" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Resource" Relationship="Self.FK_SeriesResource_Resource" FromRole="SeriesResource"
+					                    ToRole="Resource" />
+					<NavigationProperty Name="Series" Relationship="Self.FK_SeriesResource_Series" FromRole="SeriesResource"
+					                    ToRole="Series" />
+				</EntityType>
+				<EntityType Name="Video">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Series_ID" Type="Int32" Nullable="false" />
+					<Property Name="Length" Type="Int16" Nullable="false" />
+					<Property Name="Size" Type="Int64" />
+					<Property Name="Order" Type="Int64" Nullable="false" />
+					<Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="0" />
+					<Property Name="YouTube_ID" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Series" Relationship="Self.FK_Video_Series" FromRole="Video" ToRole="Series" />
+					<NavigationProperty Name="VideoResources" Relationship="Self.FK_VideoResource_Video" FromRole="Video"
+					                    ToRole="VideoResource" />
+				</EntityType>
+				<EntityType Name="VideoResource">
+					<Key>
+						<PropertyRef Name="Video_ID" />
+						<PropertyRef Name="Resource_ID" />
+					</Key>
+					<Property Name="Video_ID" Type="Int32" Nullable="false" />
+					<Property Name="Resource_ID" Type="Int32" Nullable="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+					<NavigationProperty Name="Resource" Relationship="Self.FK_VideoResource_Resource" FromRole="VideoResource"
+					                    ToRole="Resource" />
+					<NavigationProperty Name="Video" Relationship="Self.FK_VideoResource_Video" FromRole="VideoResource"
+					                    ToRole="Video" />
+				</EntityType>
+				<Association Name="FK_GameFeature_Feature">
+					<End Role="Feature" Type="Self.Feature" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameFeature" Type="Self.GameFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Feature">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameFeature">
+							<PropertyRef Name="Feature_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_ProjectFeature_Feature">
+					<End Role="Feature" Type="Self.Feature" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="ProjectFeature" Type="Self.ProjectFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Feature">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="ProjectFeature">
+							<PropertyRef Name="Feature_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Game_FlowplayerResource">
+					<End Role="FlowplayerResource" Type="Self.FlowplayerResource" Multiplicity="0..1" />
+					<End Role="Game" Type="Self.Game" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="FlowplayerResource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="Game">
+							<PropertyRef Name="FlowplayerResource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameFeature_Game">
+					<End Role="Game" Type="Self.Game" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameFeature" Type="Self.GameFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Game">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameFeature">
+							<PropertyRef Name="Game_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameResource_Game">
+					<End Role="Game" Type="Self.Game" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameResource" Type="Self.GameResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Game">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameResource">
+							<PropertyRef Name="Game_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_GameResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="GameResource" Type="Self.GameResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="GameResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_ProjectFeature_Project">
+					<End Role="Project" Type="Self.Project" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="ProjectFeature" Type="Self.ProjectFeature" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Project">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="ProjectFeature">
+							<PropertyRef Name="Project_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_SeriesResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="SeriesResource" Type="Self.SeriesResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="SeriesResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_VideoResource_Resource">
+					<End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+					<End Role="VideoResource" Type="Self.VideoResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Resource">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="VideoResource">
+							<PropertyRef Name="Resource_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_SeriesResource_Series">
+					<End Role="Series" Type="Self.Series" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="SeriesResource" Type="Self.SeriesResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Series">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="SeriesResource">
+							<PropertyRef Name="Series_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_Video_Series">
+					<End Role="Series" Type="Self.Series" Multiplicity="1" />
+					<End Role="Video" Type="Self.Video" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Series">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="Video">
+							<PropertyRef Name="Series_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_VideoResource_Video">
+					<End Role="Video" Type="Self.Video" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="VideoResource" Type="Self.VideoResource" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="Video">
+							<PropertyRef Name="ID" />
+						</Principal>
+						<Dependent Role="VideoResource">
+							<PropertyRef Name="Video_ID" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityContainer Name="program_phstudiosEntities" annotation:LazyLoadingEnabled="true">
+					<EntitySet Name="Features" EntityType="Self.Feature" />
+					<EntitySet Name="FlowplayerResources" EntityType="Self.FlowplayerResource" />
+					<EntitySet Name="Games" EntityType="Self.Game" />
+					<EntitySet Name="GameFeatures" EntityType="Self.GameFeature" />
+					<EntitySet Name="GameResources" EntityType="Self.GameResource" />
+					<EntitySet Name="Projects" EntityType="Self.Project" />
+					<EntitySet Name="ProjectFeatures" EntityType="Self.ProjectFeature" />
+					<EntitySet Name="Resources" EntityType="Self.Resource" />
+					<EntitySet Name="Series" EntityType="Self.Series" />
+					<EntitySet Name="SeriesResources" EntityType="Self.SeriesResource" />
+					<EntitySet Name="Videos" EntityType="Self.Video" />
+					<EntitySet Name="VideoResources" EntityType="Self.VideoResource" />
+					<AssociationSet Name="FK_GameFeature_Feature" Association="Self.FK_GameFeature_Feature">
+						<End Role="Feature" EntitySet="Features" />
+						<End Role="GameFeature" EntitySet="GameFeatures" />
+					</AssociationSet>
+					<AssociationSet Name="FK_ProjectFeature_Feature" Association="Self.FK_ProjectFeature_Feature">
+						<End Role="Feature" EntitySet="Features" />
+						<End Role="ProjectFeature" EntitySet="ProjectFeatures" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Game_FlowplayerResource" Association="Self.FK_Game_FlowplayerResource">
+						<End Role="FlowplayerResource" EntitySet="FlowplayerResources" />
+						<End Role="Game" EntitySet="Games" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameFeature_Game" Association="Self.FK_GameFeature_Game">
+						<End Role="Game" EntitySet="Games" />
+						<End Role="GameFeature" EntitySet="GameFeatures" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameResource_Game" Association="Self.FK_GameResource_Game">
+						<End Role="Game" EntitySet="Games" />
+						<End Role="GameResource" EntitySet="GameResources" />
+					</AssociationSet>
+					<AssociationSet Name="FK_GameResource_Resource" Association="Self.FK_GameResource_Resource">
+						<End Role="Resource" EntitySet="Resources" />
+						<End Role="GameResource" EntitySet="GameResources" />
+					</AssociationSet>
+					<AssociationSet Name="FK_ProjectFeature_Project" Association="Self.FK_ProjectFeature_Project">
+						<End Role="Project" EntitySet="Projects" />
+						<End Role="ProjectFeature" EntitySet="ProjectFeatures" />
+					</AssociationSet>
+					<AssociationSet Name="FK_SeriesResource_Resource" Association="Self.FK_SeriesResource_Resource">
+						<End Role="Resource" EntitySet="Resources" />
+						<End Role="SeriesResource" EntitySet="SeriesResources" />
+					</AssociationSet>
+					<AssociationSet Name="FK_VideoResource_Resource" Association="Self.FK_VideoResource_Resource">
+						<End Role="Resource" EntitySet="Resources" />
+						<End Role="VideoResource" EntitySet="VideoResources" />
+					</AssociationSet>
+					<AssociationSet Name="FK_SeriesResource_Series" Association="Self.FK_SeriesResource_Series">
+						<End Role="Series" EntitySet="Series" />
+						<End Role="SeriesResource" EntitySet="SeriesResources" />
+					</AssociationSet>
+					<AssociationSet Name="FK_Video_Series" Association="Self.FK_Video_Series">
+						<End Role="Series" EntitySet="Series" />
+						<End Role="Video" EntitySet="Videos" />
+					</AssociationSet>
+					<AssociationSet Name="FK_VideoResource_Video" Association="Self.FK_VideoResource_Video">
+						<End Role="Video" EntitySet="Videos" />
+						<End Role="VideoResource" EntitySet="VideoResources" />
+					</AssociationSet>
+					<EntitySet Name="LatestProjects" EntityType="PHStudiosModel.LatestProject" />
+					<EntitySet Name="LatestVideos" EntityType="PHStudiosModel.LatestVideo" />
+				</EntityContainer>
+				<EntityType Name="LatestProject">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Title" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+					<Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false"
+					          Unicode="false" />
+					<Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+				</EntityType>
+				<EntityType Name="LatestVideo">
+					<Key>
+						<PropertyRef Name="ID" />
+					</Key>
+					<Property Name="ID" Type="Int32" Nullable="false" />
+					<Property Name="Series_ID" Type="Int32" Nullable="false" />
+					<Property Name="Image" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+					<Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+					<Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="0" />
+					<Property Name="Order" Type="Int64" Nullable="false" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+				</EntityType>
+			</Schema>
+		</edmx:ConceptualModels>
+		<!-- C-S mapping content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<EntityContainerMapping StorageEntityContainer="PHStudiosModelStoreContainer"
+				                        CdmEntityContainer="program_phstudiosEntities">
+					<EntitySetMapping Name="Features">
+						<EntityTypeMapping TypeName="PHStudiosModel.Feature">
+							<MappingFragment StoreEntitySet="Feature">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Text" ColumnName="Text" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="FlowplayerResources">
+						<EntityTypeMapping TypeName="PHStudiosModel.FlowplayerResource">
+							<MappingFragment StoreEntitySet="FlowplayerResource">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+								<ScalarProperty Name="WebM" ColumnName="WebM" />
+								<ScalarProperty Name="MP4" ColumnName="MP4" />
+								<ScalarProperty Name="Flash" ColumnName="Flash" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Games">
+						<EntityTypeMapping TypeName="PHStudiosModel.Game">
+							<MappingFragment StoreEntitySet="Game">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+								<ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+								<ScalarProperty Name="FlowplayerResource_ID" ColumnName="FlowplayerResource_ID" />
+								<ScalarProperty Name="InDevelopment" ColumnName="InDevelopment" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="GameFeatures">
+						<EntityTypeMapping TypeName="PHStudiosModel.GameFeature">
+							<MappingFragment StoreEntitySet="GameFeature">
+								<ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+								<ScalarProperty Name="Feature_ID" ColumnName="Feature_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="GameResources">
+						<EntityTypeMapping TypeName="PHStudiosModel.GameResource">
+							<MappingFragment StoreEntitySet="GameResource">
+								<ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+								<ScalarProperty Name="Resource_ID" ColumnName="Resource_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Projects">
+						<EntityTypeMapping TypeName="PHStudiosModel.Project">
+							<MappingFragment StoreEntitySet="Project">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Title" ColumnName="Title" />
+								<ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+								<ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ProjectFeatures">
+						<EntityTypeMapping TypeName="PHStudiosModel.ProjectFeature">
+							<MappingFragment StoreEntitySet="ProjectFeature">
+								<ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+								<ScalarProperty Name="Feature_ID" ColumnName="Feature_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Resources">
+						<EntityTypeMapping TypeName="PHStudiosModel.Resource">
+							<MappingFragment StoreEntitySet="Resource">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Location" ColumnName="Location" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Series">
+						<EntityTypeMapping TypeName="PHStudiosModel.Series">
+							<MappingFragment StoreEntitySet="Series">
+								<ScalarProperty Name="ShortName" ColumnName="ShortName" />
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Image" ColumnName="Image" />
+								<ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+								<ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+								<ScalarProperty Name="YouTube_ID" ColumnName="YouTube_ID" />
+								<ScalarProperty Name="Finished" ColumnName="Finished" />
+								<ScalarProperty Name="Legacy" ColumnName="Legacy" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SeriesResources">
+						<EntityTypeMapping TypeName="PHStudiosModel.SeriesResource">
+							<MappingFragment StoreEntitySet="SeriesResource">
+								<ScalarProperty Name="Series_ID" ColumnName="Series_ID" />
+								<ScalarProperty Name="Resource_ID" ColumnName="Resource_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Videos">
+						<EntityTypeMapping TypeName="PHStudiosModel.Video">
+							<MappingFragment StoreEntitySet="Video">
+								<ScalarProperty Name="ID" ColumnName="ID" />
+								<ScalarProperty Name="Title" ColumnName="Title" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="Series_ID" ColumnName="Series_ID" />
+								<ScalarProperty Name="Length" ColumnName="Length" />
+								<ScalarProperty Name="Size" ColumnName="Size" />
+								<ScalarProperty Name="Order" ColumnName="Order" />
+								<ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+								<ScalarProperty Name="YouTube_ID" ColumnName="YouTube_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="VideoResources">
+						<EntityTypeMapping TypeName="PHStudiosModel.VideoResource">
+							<MappingFragment StoreEntitySet="VideoResource">
+								<ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+								<ScalarProperty Name="Resource_ID" ColumnName="Resource_ID" />
+								<ScalarProperty Name="Created" ColumnName="Created" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="LatestProjects">
+						<EntityTypeMapping TypeName="PHStudiosModel.LatestProject">
+							<MappingFragment StoreEntitySet="LatestProjects">
+								<ScalarProperty Name="Created" ColumnName="Created" />
+								<ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+								<ScalarProperty Name="Title" ColumnName="Title" />
+								<ScalarProperty Name="ID" ColumnName="ID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="LatestVideos">
+						<EntityTypeMapping TypeName="PHStudiosModel.LatestVideo">
+							<MappingFragment StoreEntitySet="LatestVideos">
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Order" ColumnName="Order" />
+								<ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+								<ScalarProperty Name="Description" ColumnName="Description" />
+								<ScalarProperty Name="Title" ColumnName="Title" />
+								<ScalarProperty Name="Image" ColumnName="Image" />
+								<ScalarProperty Name="Series_ID" ColumnName="Series_ID" />
+								<ScalarProperty Name="ID" ColumnName="ID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams></Diagrams>
+	</Designer>
+</edmx:Edmx>

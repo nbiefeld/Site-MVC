@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21a86035e4044900b14d6e3e51725806" Name="Diagram1">
+        <EntityTypeShape EntityType="PHStudiosModel.Feature" Width="1.5" PointX="11" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.FlowplayerResource" Width="1.5" PointX="13.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.Game" Width="1.5" PointX="8.875" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.GameFeature" Width="1.5" PointX="13.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.GameResource" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.Project" Width="1.5" PointX="11" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.ProjectFeature" Width="1.5" PointX="13.875" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.Resource" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.Series" Width="1.5" PointX="11.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.SeriesResource" Width="1.5" PointX="8.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.Video" Width="1.5" PointX="13.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PHStudiosModel.VideoResource" Width="1.5" PointX="6.125" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="PHStudiosModel.FK_GameFeature_Feature" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_ProjectFeature_Feature" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_Game_FlowplayerResource" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_GameFeature_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_GameResource_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_GameResource_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_ProjectFeature_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_SeriesResource_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_VideoResource_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_SeriesResource_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_Video_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="PHStudiosModel.FK_VideoResource_Video" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PHStudiosModel.LatestProject" Width="1.5" PointX="3.125" PointY="8.25" />
+        <EntityTypeShape EntityType="PHStudiosModel.LatestVideo" Width="1.5" PointX="0.625" PointY="8.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

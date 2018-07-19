@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>@ViewBag.Title | PHStudios</title>
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600" rel="stylesheet" type="text/css">
+	<link href="~/css/main.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script src="~/js/modernizr.custom.55387.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<link rel="stylesheet" href="~/fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
+	<script type="text/javascript" src="~/fancybox/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="~/fancybox/helpers/jquery.fancybox-media.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.fancybox-yt').fancybox({
+				'width': 960,
+				'height': 540,
+				helpers: {
+					media: {}
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+<header>
+	<div id="logo_container">
+		<img id="logo" src="~/images/Responsive-Banner.png" alt="PHStudios Logo"/>
+	</div>
+	<nav>
+		<div id="menu">
+			<ul>
+				<li>
+					@Html.ActionLink("Home", "Index", "Home")
+				</li>
+				<li>
+					@Html.ActionLink("Videos", "Index", "Series")
+				</li>
+				<li>
+					@Html.ActionLink("Games", "Index", "Games")
+				</li>
+				<li>
+					<a href="https://www.phscommunity.com" target="_blank">Forums</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<div id="page">
+	<div class="page-title">
+		<h1>@ViewBag.Title</h1>
+		<span>@ViewBag.Description</span>
+	</div>
+	@RenderBody()
+</div>
+<footer>
+	<nav>
+		<a href="@Url.Action("Index", "Home")" title="Home">
+			<i class="fa fa-home"></i>
+		</a>
+		<a href="@Url.Action("Index", "Series")" title="Videos">
+			<i class="fa fa-youtube-play"></i>
+		</a>
+		<a href="https://www.phscommunity.com/" title="Community" target="_blank">
+			<i class="fa fa-comments"></i>
+		</a>
+		<a href="@Url.Action("Index", "Help")" title="Help">
+			<i class="fa fa-question"></i>
+		</a>
+	</nav>
+	<div id="copyright">
+		&copy; PHStudios @DateTime.Now.Year All Rights Reserved
+	</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Nathan\Documents\SVN\PHStudios Site\trunk\Responsive-Version 1\MVC\Published</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/26/2015 15:01:45</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/26/2015 15:01:45</publishTime>
+    </File>
+    <File Include="bin/PHStudios.dll">
+      <publishTime>04/29/2015 23:17:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/26/2015 15:01:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/26/2015 15:01:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/26/2015 15:01:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/26/2015 15:01:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/26/2015 15:01:43</publishTime>
+    </File>
+    <File Include="css/main.css">
+      <publishTime>04/30/2015 00:01:47</publishTime>
+    </File>
+    <File Include="fancybox/blank.gif">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/fancybox_loading%402x.gif">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/fancybox_loading.gif">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/fancybox_overlay.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/fancybox_sprite%402x.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/fancybox_sprite.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/helpers/fancybox_buttons.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="fancybox/helpers/jquery.fancybox-buttons.css">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/helpers/jquery.fancybox-buttons.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/helpers/jquery.fancybox-media.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/helpers/jquery.fancybox-thumbs.css">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/helpers/jquery.fancybox-thumbs.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox.css">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox.pack.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="images/Community-Icon-sm.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="images/Game-Icon-sm.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="images/project.png">
+      <publishTime>04/26/2015 16:21:47</publishTime>
+    </File>
+    <File Include="images/Responsive-Banner.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="images/series/artificial-intelligence.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="images/Video-Icon-sm.png">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="js/modernizr.custom.55387.js">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Models/PHStudiosModel.edmx.diagram">
+      <publishTime>04/26/2015 15:01:59</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Error/Index.cshtml">
+      <publishTime>04/29/2015 21:01:48</publishTime>
+    </File>
+    <File Include="Views/Error/NotFound.cshtml">
+      <publishTime>04/29/2015 21:01:48</publishTime>
+    </File>
+    <File Include="Views/Games/Index.cshtml">
+      <publishTime>04/29/2015 21:01:48</publishTime>
+    </File>
+    <File Include="Views/Help/Index.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>04/29/2015 21:02:01</publishTime>
+    </File>
+    <File Include="Views/Home/LatestProjects.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Home/LatestVideos.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Project/Index.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Project/View.cshtml">
+      <publishTime>04/29/2015 21:01:48</publishTime>
+    </File>
+    <File Include="Views/Series/Index.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/Series/View.cshtml">
+      <publishTime>04/29/2015 21:01:48</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/29/2015 23:16:05</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/29/2015 21:01:43</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/29/2015 23:18:07</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

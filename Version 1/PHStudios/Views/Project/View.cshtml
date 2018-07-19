@@ -1,0 +1,41 @@
+﻿@using PHStudios.Models
+@model Project
+
+@{
+	ViewBag.Title = Model.Title;
+	ViewBag.Description = Model.ShortDescription;
+}
+
+<div id="project_container" class="main-section">
+	<div class="inner">
+		@Model.LongDescription
+	</div>
+</div>
+
+<div id="project_features_container" class="main-section alt">
+	<div class="inner">
+		<h2>Features</h2>
+		@if (Model.ProjectFeatures.Count > 0)
+		{
+			<ul class="features-list">
+				@foreach (Feature item in Model.ProjectFeatures.Select(pf => pf.Feature))
+				{
+					<li class="feature">
+						<h3>@item.Name</h3>
+						<span class="text">@item.Text</span>
+					</li>
+				}
+			</ul>
+		}
+		else
+		{
+			<span>There are no features to list at this time.  Stay tuned for updates!</span>
+		}
+	</div>
+</div>
+<div id="project_update_container" class="main-section">
+	<div class="inner">
+		<h2>Updates</h2>
+		<span>This is a project in development.  This page will be updated regularly with new features and longer descriptions.  Keep this page bookmarked if you are interested in keeping up with the development.</span>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+﻿@using PHStudios.Models
+@model SeriesViewModel
+
+@{
+	ViewBag.Title = Model.Series.Name;
+	ViewBag.Description = Model.Series.ShortDescription;
+}
+
+<div id="series_container" class="main-section">
+	<div class="inner small">
+		<div id="series_long_description">
+			@Model.Series.LongDescription
+		</div>
+		@if (Model.SeriesResources.Count > 0)
+		{
+			<div class="resource-links">
+				@foreach (Resource item in Model.SeriesResources)
+				{
+					<a href="@item.Location" class="resource-link">@item.Name</a>
+				}
+			</div>
+		}
+		@if (Model.VideoDetails.Count > 0)
+		{
+			<div id="episode_list">
+				<ol>
+					@foreach (VideoDetailsModel item in Model.VideoDetails)
+					{
+						<li>
+							<h3>@item.Video.Title</h3>
+							<p>@item.Video.Description</p>
+							<div class="resource-links">
+								<a class="fancybox-yt resource-link" href="@string.Format("https://youtu.be/{0}", item.Video.YouTube_ID)">YouTube Video</a>
+								@foreach (Resource resource in item.Resources)
+								{
+									<a href="@resource.Location" class="resource-link">@resource.Name</a>
+								}
+							</div>
+						</li>
+					}
+				</ol>
+			</div>
+		}
+	</div>
+</div>

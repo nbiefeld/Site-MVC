@@ -1,0 +1,37 @@
+﻿@using PHStudios.Models
+@model List<LatestVideo>
+
+@{
+	ViewBag.Title = "Latest Videos";
+	ViewBag.Description = "Latest videos sorted by release date";
+}
+
+<div class="main-section">
+	<div class="inner">
+		@if (Model != null && Model.Count > 0)
+		{
+			<div class="section-box-group">
+				@foreach (LatestVideo item in Model)
+				{
+					<a href="@Url.Action("View", "Series", new {id = item.Series_ID, videoID = item.ID})" class="section-box">
+						<span class="outer-dashed-circle">
+							<span class="inner-solid-circle">
+								<span>
+									@item.Name
+								</span>
+							</span>
+						</span>
+						<span class="title">@item.Title</span>
+						<span class="description">@item.Description</span>
+					</a>
+				}
+			</div>
+		}
+		else
+		{
+			<span>
+				There are no videos to display at this time.
+			</span>
+		}
+	</div>
+</div>

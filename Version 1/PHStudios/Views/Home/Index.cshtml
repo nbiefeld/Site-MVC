@@ -1,0 +1,88 @@
+﻿@using PHStudios.Models
+@model LatestViewModel
+
+@{
+	ViewBag.Title = "PHStudios";
+	ViewBag.Description = "Game development and other tutorials";
+}
+
+<div id="main_features" class="main-section">
+	<div class="inner">
+		<div class="section-box-group">
+			<a class="section-box" href="@Url.Action("Index", "Series")">
+				<img class="large" src="~/images/Video-Icon-sm.png" alt="Tutorials"/>
+				<span class="title">Videos</span>
+				<span class="description">
+					There is a wide range of videos available to watch from tutorials to Let's Plays.
+				</span>
+			</a>
+			<a class="section-box" href="@Url.Action("Index", "Games")">
+				<img class="large" src="~/images/Game-Icon-sm.png" alt="Games"/>
+				<span class="title">Games</span>
+				<span class="description">
+					Video games and source code produced from tutorials are available to download and enjoy.
+				</span>
+			</a>
+			<a class="section-box" href="https://www.phscommunity.com" target="_blank">
+				<img class="large" src="~/images/Community-Icon-sm.png" alt="Community"/>
+				<span class="title">Forums</span>
+				<span class="description">
+					Community forums exist that allow fellow developers and designers to interact with each other
+				</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div id="latest_content" class="main-section alt">
+	<div class="inner">
+		<h2>Latest Videos</h2>
+		@if (Model != null && Model.LatestVideos != null && Model.LatestVideos.Count > 0)
+		{
+			<div class="section-box-group">
+				@foreach (LatestVideo item in Model.LatestVideos)
+				{
+					<a href="@Url.Action("View", "Series", new {id = item.Series_ID, videoID = item.ID})" class="section-box">
+						<span class="outer-dashed-circle">
+							<span class="inner-solid-circle">
+								<span>
+									@item.Name
+								</span>
+							</span>
+						</span>
+						<span class="title">@item.Title</span>
+						<span class="description">@item.Description</span>
+					</a>
+				}
+			</div>
+			<a href="@Url.Action("LatestVideos", "Home")" class="view-more">View More</a>
+		}
+		else
+		{
+			<span>There are no videos to display at this time.</span>
+		}
+	</div>
+</div>
+<div id="current_projects" class="main-section">
+	<div class="inner">
+		<h2>Current Projects</h2>
+		@if (Model != null && Model.LatestProjects != null && Model.LatestProjects.Count > 0)
+		{
+			<div class="section-box-group">
+				@foreach (LatestProject item in Model.LatestProjects)
+				{
+					<a href="@Url.Action("View", "Project", new {id = item.ID})" class="section-box project-box">
+						<img src="~/images/project.png" alt="Project"/>
+						<span class="title">@item.Title</span>
+						<span class="description">@item.ShortDescription</span>
+					</a>
+				}
+			</div>
+			<a href="@Url.Action("LatestProjects", "Home")" class="view-more">View More</a>
+		}
+		else
+		{
+			<span>There are no projects to display at this time.</span>
+		}
+	</div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using PHStudios.Models
+@model List<Project>
+
+@{
+	ViewBag.Title = "Projects";
+	ViewBag.Description = "See what current projects are in development";
+}
+
+<div id="current_projects" class="main-section">
+	<div class="inner">
+		@if (Model != null)
+		{
+			<div class="section-box-group">
+				@foreach (Project item in Model)
+				{
+					<a href="@Url.Action("View", "Project", new {id = item.ID})" class="section-box project-box">
+						<img src="~/images/project.png" alt="Project"/>
+						<span class="title">@item.Title</span>
+						<span class="description">@item.ShortDescription</span>
+					</a>
+				}
+			</div>
+		}
+		else
+		{
+			<span>There are no projects to display at this time.</span>
+		}
+	</div>
+</div>

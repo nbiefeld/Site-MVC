@@ -1,0 +1,27 @@
+﻿@using PHStudios.Models
+@model List<Series>
+
+@{
+	ViewBag.Title = "Videos";
+	ViewBag.Description = "There is a wide range of videos available to watch from tutorials to Let's Plays";
+}
+
+<div id="video_list_container" class="main-section">
+	<div class="inner">
+		@if (Model != null && Model.Count > 0)
+		{
+			<div id="series_list" class="clearfix">
+				@foreach (Series item in Model)
+				{
+					<a href="@Url.Action("View", "Series", new {id = item.ID})" class="series-name-block">
+						@(item.ShortName ?? @item.Name)
+					</a>
+				}
+			</div>
+		}
+		else
+		{
+			<span>There are no series to display at this time.</span>
+		}
+	</div>
+</div>
